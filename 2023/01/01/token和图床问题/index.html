@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Token和图床问题 | Tobey的小木屋</title>
+        <meta name="author" content="Tobey Guo">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/QQ%E5%9B%BE%E7%89%8720230101095724.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tobey的小木屋</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tobey的小木屋</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>Token和图床问题 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/1/1
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/site/" style="color: #ff7d73">
+                    site
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <p>好久没动这个博客了，开了学就放了，最近朋友想用blog传传笔记才又开始动了它</p>
+<span id="more"></span>
+
+<p>先说说这次重开遇到的问题吧</p>
+<ol>
+<li><p>之前的<strong>图床</strong>不能用了，现在的图床在github上存的，用<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/489236769">PicGo</a> 进行图片上传，挺方便的，顺便解决了typora 写笔记时图片总是保存在本地，一来占内存，二来无法在云端享受同样的体验，在Typora的偏好设置中改了改，现在默认将粘贴过来的图片上传到图床。</p>
+<ol>
+<li><p><strong>图床加速方面</strong>，github访问速度慢，网上有人用Netlify加速，我嫌麻烦，（也是蠢，不想试），就用jsDelivr 加速了，改改PicGo 在github 设置中的自定义域名就OK，原理是上传还是在github上，下载就是通过jsDelivr 加速通道下载了，</p>
+<p>对了图床还有插件功能，以后有时间可以试试</p>
+</li>
+<li><p>哦，对，这回搞得时候又把github的<strong>token</strong>原理忘了，刚好之前的token过期了，就用从头搞了一边</p>
+<ol>
+<li><p>token 权限方面一般只有repo管理就行，就既能上传文件，又能下载文件了</p>
+</li>
+<li><p>token 在本地使用的时候 输入是在密码那里输滴，当然也可以在连接中就直接写入token，当然这样比较麻烦，每回都要复制token，要么，可以通过修改连接的方式直接连接token</p>
+<p><img src="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/image-20230101112039001.png" alt="连接格式"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014090429/article/details/126509415?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-126509415-blog-126808354.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-126509415-blog-126808354.pc_relevant_recovery_v2&utm_relevant_index=2">修改链接的blog</a></p>
+</li>
+<li><p>还有就是gh工具，不过这个blog的好像不好用，之后再探索探索吧</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chengwenyang/article/details/120060010">github的token使用方法_chengwenyang的博客-CSDN博客_github token</a></p>
+</li>
+<li><p>当然这样有他不方便的地方，之后每回写笔记要开梯子了，很麻烦</p>
+</li>
+</ol>
+</li>
+<li><p>找图床的时候找到几个比较厉害的图片搜集网站</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/354656727">精选 8 个高清二次元动漫壁纸网站推荐 - 知乎 (zhihu.com)</a></p>
+</li>
+</ol>
+</li>
+<li><p>第二个就是<strong>Hexo 遇到的问题</strong>，我忘了Hexo咋用了，不过还好<code>hexo --help</code>能看懂，刚开始hexo命令没法用，之后重新安装了一边之后才能用成，不知道为什么</p>
+<ol>
+<li><p>这里有一个点就是每回新开hexo的时候都要在文件夹里<code>npm install</code> 配置一遍</p>
+<p><a target="_blank" rel="noopener" href="https://blog.cuijiacai.com/blog-building/">个人博客搭建教程 | 爱扑bug的熊 (cuijiacai.com)</a></p>
+</li>
+<li><p>对了，我现在<code>hexo serve</code>  不知道为什么4000端口不能用了，现在要<code>hexo serve -p 5000</code> 用5000端口了</p>
+<p>查了一遍发现也没被占用，之后才知道可能是因为我更新了window的原因还是我开了hyper-V的原因，4000端口被保留了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/image-20230101114131179.png" alt="image-20230101114131179"></p>
+</li>
+</ol>
+</li>
+</ol>
+<p>​			<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_47696151/article/details/117785566?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-117785566-blog-109691064.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-117785566-blog-109691064.pc_relevant_recovery_v2&utm_relevant_index=1">原因</a></p>
+<p>哦，对了，还发现了<strong>网络报错</strong>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011779517/article/details/122798450">解决方法</a></p>
+
+    </div>
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 20xx - 2023 Tobey的小木屋
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Tobey Guo
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+<script>
+    var clientID = "8f4976e027fbda8dd147", clientSecret = "23ec91414867398b1a88f6a1fd27167e5df5aa78";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "gitalk-comments",
+        owner: "GuoShuaiGO",
+        admin: ["GuoShuaiGO"],
+        language: "zh-CN en",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+    })
+    gitalk.render("gitalk-container")
+</script>
+
+
+    </body>
+</html>
