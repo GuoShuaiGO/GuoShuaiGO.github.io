@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Blog的整体理解 | Tobey的小木屋</title>
+        <meta name="author" content="Tobey Guo">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/QQ%E5%9B%BE%E7%89%8720230101095724.jpg">
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css">
+        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features="></script>
+        
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:2147483647;justify-content:space-between;background:#fff;transition:all 0.3s ease-out;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none">
+    <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+        <div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+            <div>
+                <h2>LOADING...</h2>
+                <p style="word-break:keep-all">加载过慢请开启缓存（浏览器默认开启）</p>
+                <div>
+                    <img alt="loading" src="/loading.gif">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div id="layout">
+            <transition name="into">
+                <div v-show="showpage" style="display: -not-none">
+                    <div id="menushow">
+                        <nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tobey的小木屋</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menushow" id="phone-menu">
+        <div class="curtain" @click="menushow = !menushow" v-show="menushow"></div>
+        <div class="title" @click="menushow = !menushow">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tobey的小木屋</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menushow">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                    </div>
+                    <div id="main">
+                        <div class="article">
+    <div>
+        <h1>Blog的整体理解 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/5
+        </span>
+        
+        <span class="category">
+            <a href="/categories/site/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                site
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/GitHub-page/" style="color: #00bcd4">
+                    GitHub page
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/netfily-%E4%B8%A4%E7%A7%8D%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" style="color: #03a9f4">
+                    netfily 两种功能实现
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/hexo-%E5%8E%9F%E7%90%86/" style="color: #00bcd4">
+                    hexo 原理
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="blog的整体理念"><a href="#blog的整体理念" class="headerlink" title="blog的整体理念"></a>blog的整体理念</h1><p>涉及</p>
+<ul>
+<li><code>github page</code>的使用</li>
+<li><code>Hexo</code> 的原理</li>
+<li><code>netlify</code> 的两种使用方法</li>
+</ul>
+<span id="more"></span>
+
+
+
+<h2 id="Hexo原理"><a href="#Hexo原理" class="headerlink" title="Hexo原理"></a>Hexo原理</h2><p>先讲讲Hexo使用原理吧</p>
+<h4 id="首先-Hexo-是一个博客框架"><a href="#首先-Hexo-是一个博客框架" class="headerlink" title="首先  Hexo 是一个博客框架"></a>首先  <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a> 是一个博客框架</h4><pre><code class="bash">.
+├── node_modules：#依赖包-安装插件及所需nodejs模块。
+├── public  #最终网页信息。即存放被解析markdown、html文件。
+├── scaffolds #模板文件夹。即当您新建文章时，根据 scaffold生成文件。
+├── source  #资源文件夹。即存放用户资源。
+|   └── _posts #博客文章目录。
+└── themes #存放主题。Hexo根据主题生成静态页面。
+├── _config.yml   #网站的配置信息。标题、网站名称等。
+├── db.json：#source解析所得到的缓存文件。
+├── package.json  # 应用程序信息。即配置Hexo运行需要js包。
+</code></pre>
+<h5 id="粗俗的解释原理："><a href="#粗俗的解释原理：" class="headerlink" title="粗俗的解释原理："></a>粗俗的解释原理：</h5><p>blog的本质就是markdown文档和相对应的管理，所以Hexo将blog的这两个功能分离为数据（就是你要编写的markdown文档 存放在<code>source</code>文件夹中）以及框架管理<code>themes</code> <code>scaffolds</code> 文件夹中的东西，其中scaffolds存放的是<code>layout</code>的原始信息，方便使用<code>hexo new post(或者是其他layout) &quot;title&quot;</code> 创建layout模板，而layout的渲染，和其他好看的评论呀，搜索功能呀，猫咪装饰呀，都在于<code>themes</code> 主题中选择的主题而言了，最后</p>
+<pre><code>hexo clean #删除public文件夹
+hexo generate # 将以上数据和框架结合起来，形成对应的html，css，JavaScript等前端静态文件
+hexo serve -p 5000#我的是因为4000被空了，所以用5000 端口，来展示public中的内容
+hexo deploy #将public部分部署到对应的前端网页
+</code></pre>
+<h5 id="涉及代码的解释就是："><a href="#涉及代码的解释就是：" class="headerlink" title="涉及代码的解释就是："></a>涉及代码的解释就是：</h5><p>呜呜呜，我不懂😭😭😭</p>
+<p>反正以我目前的理解来说，首先要理解什么是</p>
+<h6 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h6><p>这是一个JavaScript的开发环境，基于chrome V8引擎，能够使开发者摆脱浏览器的限制，（原本JavaScript 只能在浏览器中运行，导致他只能担任前端脚本的作用，而nodejs让他能够脱离浏览器的限制，在nodejs中运行）</p>
+<h6 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h6><p>node package manager 使nodejs的包管理系统，就像各种语言都有的包一样，npm是能够在nodejs中运行的语言包，hexo就是一个包，但是这个包里面的使用的代码不是纯粹的JavaScript 而是所谓的nodejs模板引擎</p>
+<h6 id="nodejs-模板引擎"><a href="#nodejs-模板引擎" class="headerlink" title="nodejs 模板引擎"></a>nodejs 模板引擎</h6><p>其实就是变形的语言，模板引擎是第三方模块。 <strong>让开发者以更加友好的方式拼接字符串，使项目代码更加清晰、更加易于维护。</strong> 实现原理就是用许多变量来代替JavaScript等语言（主要是JavaScript）中的部分必须要的原本要固定的代码</p>
+<p><a target="_blank" rel="noopener" href="https://www.php.cn/website-design-ask-484671.html">nodejs模板引擎有些什么</a></p>
+<p>所以我的blog所谓的不断改动如果我没用学对应的模板引擎的话，实现更多的功能无非就是用不同的主题，然后进行配置……..</p>
+<p>坦率地说，这样做的话没有什么技术含量，所以我之后也就不会咱们动我的site了。。。</p>
+<h4 id="github-page"><a href="#github-page" class="headerlink" title="github page"></a>github page</h4><p>其实很简单，就是仓库名要设置成<code>&lt;用户名&gt;.github.io</code> 之后调用setting中的page选项就可以了，一种博客实现方式就是通过<code>hexo deploy</code> 将pulic部分部署到上面写的仓库中，之后用github page功能将这些离散的源静态文件（html，css，JavaScript）部署成网页的形式</p>
+<h4 id="netlify"><a href="#netlify" class="headerlink" title="netlify"></a>netlify</h4><p>netlify有两个功能</p>
+<h6 id="网站部署"><a href="#网站部署" class="headerlink" title="网站部署"></a>网站部署</h6><p>一个是可以它可以实现GitHub page的功能，链接到github的仓库之后当仓库发生更改，Netlify监测到变更时进行拉取并直接伺服（伺服就是实现GitHub page的网页部署功能）。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.cuijiacai.com/blog-building/">个人博客搭建教程 | 爱扑bug的熊 (cuijiacai.com)</a> 这个blog里面就实现了这种功能，比第二个功能需要多设置的就是，部署时，需要在那个云端产生一遍它的pulic文件（应该是我的public和他的public会有差别，导致需要按照他的路径生成一遍public），这也就是需要多设置的这两个地方</p>
+<p><img src="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/image-20230105224733358.png" alt="image-20230105224733358"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/image-20230105224814636.png" alt="image-20230105224814636"></p>
+<p>要在它那里运行一遍npm 的netlify这个命令，而之前定义的netlify这个命令就是<code>npm run clean &amp;&amp; npm run build</code> 这两句npm包命令，而这两个命令在之前定义为<code>hexo clean和hexo generate</code> 这两条hexo命令，注意，这里关于npm命令的设置，都在</p>
+<p><img src="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/image-20230105225134254.png" alt="image-20230105225134254"></p>
+<p>package.json 这个的设置里面，这个文件存放的是npm对hexo这个包的管理配置信息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/image-20230105225330622.png" alt="image-20230105225330622"></p>
+<p>并且netlify能够自动生成https网站，绑定外面申请的域名，比如说我的 <code>tobeycabin.love</code> 挺棒的</p>
+<h6 id="github加速"><a href="#github加速" class="headerlink" title="github加速"></a>github加速</h6><p>由于netlify访问速度比github快，所以可以通过netlify绑定github对应仓库，之后访问netlify就等价于访问对应仓库路径</p>
+<p>比如说我的图床就在netlify中加速了一下</p>
+<p><a target="_blank" rel="noopener" href="https://imgshack.netlify.app/">https://imgshack.netlify.app/</a></p>
+<p><a target="_blank" rel="noopener" href="https://imgshack.netlify.app/img/QQ%E5%9B%BE%E7%89%8720230101095724.jpg">QQ图片20230101095724.jpg (1080×1080) (imgshack.netlify.app)   头像链接https://imgshack.netlify.app/img/QQ图片20230101095724.jpg</a></p>
+<p>对应路径就是github仓库中的路径，之后看吧，如果这样的访问速度快的话我就用它来加速我的图床了</p>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+                        <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022-8-27 - 2023 Tobey的小木屋
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Tobey Guo
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> & <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+
+                    </div>
+                </div>
+            </transition>
+            <div id="showimg">
+                <img id="showimg-content" alt="showimg">
+            </div>
+        </div>
+        <script src="/js/functions.js"></script>
+<script src="/js/particlex.js"></script>
+
+    
+    
+    
+    
+
+
+    </body>
+</html>

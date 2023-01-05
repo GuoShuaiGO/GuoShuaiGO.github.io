@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tags | Tobey的小木屋</title>
+        <title>Race Debug | Tobey的小木屋</title>
         <meta name="author" content="Tobey Guo">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -132,121 +132,92 @@
 
                     </div>
                     <div id="main">
-                        <div id="archives">
-    
-    <div class="categories-tags">
+                        <div class="article">
+    <div>
+        <h1>Race Debug </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/5
+        </span>
         
-        
-        <span>
-            <a href="/tags/GitHub-page/" style="background: #03a9f4">
+        <span class="category">
+            <a href="/categories/gwx/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                GitHub page
+                gwx
             </a>
         </span>
         
         
-        <span>
-            <a href="/tags/netfily-%E4%B8%A4%E7%A7%8D%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                netfily 两种功能实现
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/hexo-%E5%8E%9F%E7%90%86/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                hexo 原理
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                图床
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/jsDelivr-%E5%8A%A0%E9%80%9F/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                jsDelivr 加速
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/github-token/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                github token
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/%E7%AB%AF%E5%8F%A3%E6%9F%A5%E7%9C%8B/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                端口查看
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/c-new%E5%BA%93/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                c++ new库
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/c-%E7%B1%BB/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                c++ 类
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/c-debug/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                c++ debug
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/%E7%AB%9E%E8%B5%9B/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                竞赛
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/c-debug/" style="color: #ff7d73">
+                    c++ debug
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%AB%9E%E8%B5%9B/" style="color: #ff7d73">
+                    竞赛
+                </a>
+            </span>
+            
         </span>
         
     </div>
+    
+    <div class="content" v-pre>
+        <p>佬的笔记😍😍😍</p>
+<span id="more"></span>
+
+<h1 id="C-比赛中调试的方法"><a href="#C-比赛中调试的方法" class="headerlink" title="C++比赛中调试的方法"></a>C++比赛中调试的方法</h1><h2 id="1-输入输出重定向"><a href="#1-输入输出重定向" class="headerlink" title="1.输入输出重定向"></a>1.输入输出重定向</h2><p>比赛中数据的手动输入总是花费很长的时间，所以要对数据的输入进行从定向。将数据写入文件中，然后当作标准输入提供给程序就行。<br>重定向输入有两种方法 这里假定将输入放进input.txt,输入放在out.txt中。程序为a.exe  （linux为 a.o)</p>
+<h3 id="1-临时重定向"><a href="#1-临时重定向" class="headerlink" title="1 临时重定向"></a>1 临时重定向</h3><p>在命令行中输入<br><code>a.exe &lt; input.txt</code><br>这是输入的重定向<br><code>a.exe &gt; out.txt</code><br>这是输出的重定向<br>同时<br><code>a.exe &lt; input.txt &gt; out.txt</code><br>可以同时完成输入输出的重定向。<br>临时的重定向虽好，但是每次都要手动输入，而且有时候利用IDE调试的时候也不方便，这时候就有</p>
+<h3 id="2-重定向函数"><a href="#2-重定向函数" class="headerlink" title="2 重定向函数"></a>2 重定向函数</h3><p>在main()的入口加一段</p>
+<pre><code>freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);
+freopen(&quot;out.txt&quot;,&quot;w&quot;,stdout);
+</code></pre>
+<p>第一行表示将input.txt作为标准输入，stdin表示标准输入。<br>第二行表示将out.txt作为标准输出，stdout表示标准输出。<br>当要提交的时候将这两行注释掉即可。<br>但是这样也比较麻烦，我们下面要介绍一个方法，在本机上会执行对应的代码，但测试平台上则不执行</p>
+<h2 id="2-宏定义"><a href="#2-宏定义" class="headerlink" title="2 宏定义"></a>2 宏定义</h2><p>在代码入下</p>
+<pre><code> #define LOCAL
+ #include &lt;iostream&gt;
+ using namespace std;
+char a[100];
+int main()
+&#123;
+#ifdef LOCAL
+    freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    cin &gt;&gt; a;
+    cout &lt;&lt; a;
+    return 0;
+&#125;
+</code></pre>
+<p>第一行先定义 LOCAL符号<br>在 #ifdef 和 #endif 之间存放在本机才执行的代码。比如刚才的重定向输入。<br>当提交的时候要把#define LOCAL 注释掉。<br>其实也可以在编译的时候定义LOCAL符号，即</p>
+<pre><code>g++ -DLOCAL ./test.cpp -o ./test.exe
+</code></pre>
+<p>在编译时加入-D变量名  选项即可在编译时定义变量。如果你用的是vscode就可以在task.json中添加这个选项。</p>
+<h2 id="3-对比输出"><a href="#3-对比输出" class="headerlink" title="3 对比输出"></a>3 对比输出</h2><p>当输出很多的时候很难去一个个的和标准答案比较，这时候就要用系统自带的工具了<br>window系统在命令行中输入</p>
+<pre><code>fc out.txt 答案.txt
+</code></pre>
+<p>用于对比输出和答案之间的差异（如果用的是linux这个指令为diff）</p>
+<h2 id="4-调整栈的大小"><a href="#4-调整栈的大小" class="headerlink" title="4 调整栈的大小"></a>4 调整栈的大小</h2><p>虽然比赛中是无法调整平台栈的大小的，但一般评测平台为linux系统，默认调用栈为10mb，但是vc++ 的默认大小却只有1mb。有时会出现在本机上调试不过的现象，这时候就要将栈的大小调整一下了。<br>对于vs可以之间在项目-属性中调整<br>而对于g++则可以通过加-Wl,–stack&#x3D;16777216   (16MB) 编译选项，来调整调用栈的大小。</p>
+
+    </div>
+    
+    
+    
+    
     
 </div>
 
@@ -274,6 +245,11 @@
         </div>
         <script src="/js/functions.js"></script>
 <script src="/js/particlex.js"></script>
+
+    
+    
+    
+    
 
 
     </body>

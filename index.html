@@ -9,25 +9,37 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <link rel="icon" href="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/QQ%E5%9B%BE%E7%89%8720230101095724.jpg">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css">
+        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features="></script>
+        
         
         <link rel="stylesheet" href="/css/fonts.min.css">
         <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
     <meta name="generator" content="Hexo 6.2.0"></head>
     <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:2147483647;justify-content:space-between;background:#fff;transition:all 0.3s ease-out;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none">
+    <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+        <div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+            <div>
+                <h2>LOADING...</h2>
+                <p style="word-break:keep-all">加载过慢请开启缓存（浏览器默认开启）</p>
+                <div>
+                    <img alt="loading" src="/loading.gif">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
         <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
             <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
+                <div v-show="showpage" style="display: -not-none">
+                    <div id="menushow">
+                        <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
             <span class="title">Tobey的小木屋</span>
@@ -59,14 +71,14 @@
         </a>
         
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
+    <div :class="'phone-menu ' + menushow" id="phone-menu">
+        <div class="curtain" @click="menushow = !menushow" v-show="menushow"></div>
+        <div class="title" @click="menushow = !menushow">
             <i class="fa-solid fa-bars fa-fw"></i>
             <span>&emsp;Tobey的小木屋</span>
         </div>
         <transition name="slide">
-        <div class="items" v-show="menu_show">
+        <div class="items" v-show="menushow">
             
             <a href="/">
                 <div class="item">
@@ -117,12 +129,13 @@
         </transition>
     </div>
 </nav>
+
                     </div>
                     <div id="main">
-                        <div id="home-head">
-    <div id="home-background" style="background-image: url(https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/wallhaven.png)"></div>
+                        <div id="home-background" style="background-image: url(https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/wallhaven.png)"></div>
+<div id="home-head">
     
-    <div id="home-info" class="home-info" @click="home_click">
+    <div id="home-info" class="home-info" @click="homeclick">
         <span class="loop"></span>
         <span class="loop"></span>
         <span class="loop"></span>
@@ -137,21 +150,149 @@
     </div>
     
 </div>
-
 <div id="home-posts-wrap" class="">
     <div id="home-posts">
         <div id="posts">
             
 
 <div class="post">
-    <a href="/2023/01/01/动态创建类数组/">
+    <a href="/2023/01/05/race-debug/">
+        <h2 class="post-title">Race Debug</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/gwx/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                gwx
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/5
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>佬的笔记😍😍😍</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/c-debug/" style="color: #ff7d73">
+                c++ debug
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%AB%9E%E8%B5%9B/" style="color: #ffa2c4">
+                竞赛
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/01/05/race-debug/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/01/05/blog%E7%9A%84%E6%95%B4%E4%BD%93%E7%90%86%E8%A7%A3/">
+        <h2 class="post-title">Blog的整体理解</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/site/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                site
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/5
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="blog的整体理念"><a href="#blog的整体理念" class="headerlink" title="blog的整体理念"></a>blog的整体理念</h1><p>涉及</p>
+<ul>
+<li><code>github page</code>的使用</li>
+<li><code>Hexo</code> 的原理</li>
+<li><code>netlify</code> 的两种使用方法</li>
+</ul>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/GitHub-page/" style="color: #ff7d73">
+                GitHub page
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/netfily-%E4%B8%A4%E7%A7%8D%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" style="color: #03a9f4">
+                netfily 两种功能实现
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/hexo-%E5%8E%9F%E7%90%86/" style="color: #00bcd4">
+                hexo 原理
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/01/05/blog%E7%9A%84%E6%95%B4%E4%BD%93%E7%90%86%E8%A7%A3/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/01/01/%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E7%B1%BB%E6%95%B0%E7%BB%84/">
         <h2 class="post-title">动态创建类数组</h2>
     </a>
     <div class="category-and-date">
         
+        <span class="category">
+            <a href="/categories/gwx/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                gwx
+            </a>
+        </span>
+        
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/1/1
         </span>
@@ -167,37 +308,46 @@
     <div class="post-tags">
         
         <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            <i class="fa-solid fa-tags fa-fw"></i>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/gwx/" style="color: #03a9f4">
-                gwx
+            <a href="/tags/c-new%E5%BA%93/" style="color: #ff7d73">
+                c++ new库
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/c/" style="color: #ff7d73">
-                c++
+            <a href="/tags/c-%E7%B1%BB/" style="color: #ffa2c4">
+                c++ 类
             </a>
         </span>
         
     </div>
-    <a href="/2023/01/01/动态创建类数组/" class="go-post">阅读全文</a>
+    <a href="/2023/01/01/%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E7%B1%BB%E6%95%B0%E7%BB%84/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2023/01/01/token和图床问题/">
+    <a href="/2023/01/01/token%E5%92%8C%E5%9B%BE%E5%BA%8A%E9%97%AE%E9%A2%98/">
         <h2 class="post-title">Token和图床问题</h2>
     </a>
     <div class="category-and-date">
         
+        <span class="category">
+            <a href="/categories/site/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                site
+            </a>
+        </span>
+        
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/1/1
         </span>
@@ -212,19 +362,40 @@
     <div class="post-tags">
         
         <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            <i class="fa-solid fa-tags fa-fw"></i>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/site/" style="color: #ffa2c4">
-                site
+            <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="color: #ff7d73">
+                图床
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/jsDelivr-%E5%8A%A0%E9%80%9F/" style="color: #03a9f4">
+                jsDelivr 加速
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/github-token/" style="color: #ffa2c4">
+                github token
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%AB%AF%E5%8F%A3%E6%9F%A5%E7%9C%8B/" style="color: #ffa2c4">
+                端口查看
             </a>
         </span>
         
     </div>
-    <a href="/2023/01/01/token和图床问题/" class="go-post">阅读全文</a>
+    <a href="/2023/01/01/token%E5%92%8C%E5%9B%BE%E5%BA%8A%E9%97%AE%E9%A2%98/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
@@ -233,9 +404,18 @@
     </a>
     <div class="category-and-date">
         
+        <span class="category">
+            <a href="/categories/site/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                site
+            </a>
+        </span>
+        
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2022/9/11
         </span>
@@ -243,30 +423,19 @@
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h1 id="HELLO-MY-BLOG"><a href="#HELLO-MY-BLOG" class="headerlink" title="HELLO! MY BLOG!"></a>HELLO! MY BLOG!</h1>
+            
             
         </div>
     </div>
     <div class="post-tags">
         
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Hello/" style="color: #00a596">
-                Hello
-            </a>
-        </span>
         
     </div>
     <a href="/2022/09/11/Hello-Blog/" class="go-post">阅读全文</a>
 </div>
 
-             
-<div class="page-current">
+
+            <div class="page-current">
     <div class="prev">
         
     </div>
@@ -281,6 +450,7 @@
         
     </div>
 </div>
+
         </div>
     </div>
     
@@ -288,7 +458,7 @@
         <div id="card-div">
     <div class="card-style" style="width: 300px">
         <div class="avatar">
-            <img src="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/QQ%E5%9B%BE%E7%89%8720230101095724.jpg " alt="avatar">
+            <img src="https://cdn.jsdelivr.net/gh/GuoShuaiGO/Image_Shack_BLOG@main/img/QQ%E5%9B%BE%E7%89%8720230101095724.jpg" alt="avatar">
         </div>
         <div class="name">
             Tobey Guo
@@ -296,8 +466,8 @@
         <div class="descriptions">
             
             <div class="description">
-                这是一个供tobey写学习，生活方面感想的blog树洞，主要是为了自娱自乐
- 别问有没有技术含量，问就是没有，问就全是ctrl+cv
+                <p>这是一个供tobey写学习，生活方面感想的blog树洞，主要是为了自娱自乐<br> 别问有没有技术含量，问就是没有，问就全是ctrl+cv</p>
+
             </div>
             
         </div>
@@ -309,36 +479,36 @@
         </div>
     </div>
 </div>
+
     </div>
     
 </div>
-                         
-<footer id="footer">
+
+                        <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 20xx - 2023 Tobey的小木屋
+            © 2022-8-27 - 2023 Tobey的小木屋
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
             @Tobey Guo
         </div>
         <div></div>
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> & <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
         
     </div>
 </footer>
+
                     </div>
                 </div>
             </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
+            <div id="showimg">
+                <img id="showimg-content" alt="showimg">
             </div>
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        
+        <script src="/js/functions.js"></script>
+<script src="/js/particlex.js"></script>
+
 
     </body>
 </html>
