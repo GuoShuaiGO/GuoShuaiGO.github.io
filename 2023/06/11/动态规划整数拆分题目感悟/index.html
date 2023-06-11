@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Categories: Gwx | Tobey的小木屋</title>
+        <title>动态规划整数拆分题目感悟 | Tobey的小木屋</title>
         <meta name="author" content="Tobey Guo">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -132,43 +132,20 @@
 
                     </div>
                     <div id="main">
-                        <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        <span>
-            <a href="/categories/site/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                site
-            </a>
+                        <div class="article">
+    <div>
+        <h1>动态规划整数拆分题目感悟 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/11
         </span>
         
-        
-        <span>
-            <a href="/categories/ai/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                ai
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/c/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                c++
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/algorithm/" style="background: #00a596">
+        <span class="category">
+            <a href="/categories/algorithm/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -177,134 +154,42 @@
         </span>
         
         
-        <span>
-            <a href="/categories/gwx/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                gwx
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/algorithm/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                动态规划
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/algorithm/%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                回溯法
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/algorithm/%E9%80%92%E5%BD%92/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                递归
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="color: #00bcd4">
+                    动态规划
+                </a>
+            </span>
+            
         </span>
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/1/5</div>
-            <a href="/2023/01/05/race-debug/">
-                <h3>Race Debug</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/c/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        c++
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/c-debug/" style="color: #00a596">
-                            c++ debug
-                        </a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E7%AB%9E%E8%B5%9B/" style="color: #00bcd4">
-                            竞赛
-                        </a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <p>题目如下：<br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-equal-subset-sum/">https://leetcode.cn/problems/partition-equal-subset-sum/</a></p>
+<blockquote>
+<p>给你一个 只包含正整数 的 非空 数组 nums 。请你判断是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [1,5,11,5]<br>输出：true<br>解释：数组可以分割成 [1, 5, 5] 和 [11] 。<br>示例 2：</p>
+<p>输入：nums &#x3D; [1,2,3,5]<br>输出：false<br>解释：数组不能分割成两个元素和相等的子集。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>这里整数拆分的题目，代码随想录处理的并不好。但是依旧有借鉴意义。<br>我们这里只讲它的动态规划的代码（也就是它附加的第一个代码）<br>动态规划的核心是<br>dp数组的记忆与递归公式的结合使用<br>这个整数拆分的dp数组记忆很简单，这里就不多说，我只说它的递推公式<br>dp[i] &#x3D; max(dp[i], max((i - j) * j, dp[i - j] * j))<br>他这里实际上有冗余，因为他是根据他第三个思路不清但是通过了的代码改过来的实际上应该是这样的<br>dp[i] &#x3D;max((i - j) * j, dp[i - j] * j)<br>我们理解递推公式，甚至思考递推公式要保持的这样一个思路：<br>最后一步是怎样由倒数第二步推导出来的<br>或者上面那种说法强调了由倒数第二步推导，不够清楚，因为很多，比如说这里的这个问题就不完全是根据倒数第二步的结果dp[i-1]，推导出来的，而是综合了dp[i-1]和其他已知条件推导出来的<br>或者我们可以这样说：</p>
+<p>最后一步是可以拆分成怎样的由已知条件的比较，简单计算而获得的结果</p>
+<p>我们用这样一个思路来解释这个递推公式：最后一步，求i的拆分之后相乘的最大值就是可以通过拆成两个数相乘与多个数相乘两种互斥情况，之后比较求最大值来获得（这里但凡拆分之后，所要求的拆分之后每一个部分的最大值我们是已知的）</p>
+<p>而拆成多个数我的最初思路是会有两种情况，拆成两个数之后其中一个数拆另外一个数不拆，与两个数都拆两种情况<br>所以递推公式应该是：<br>dp[i] &#x3D;max((i - j) * j, dp[i - j] * j,dp[i-j]<em>dp[j])<br>即还应多有两个数都拆的这种情况dp[i-j]<em>dp[j]<br>其实仔细一想，由于j从1到i-1，他的代码是从1到i-2，是因为他要适应没有dp[1]这种情况导致不能出现dp[i-(i-1)]<br>由于确实最终求最大值不会出现拆出1</em>xxx</em>xxx这种无用选项，所以这种算法是没毛病的，（我们从1开始是要适应会出现1<em>i-1这种情况，所以必须从1开始，而(i-1)</em>(i-(i-1))其实已经算过了，其实只要j大于i&#x2F;2,(i - j) * 就都是重复的了）<br>回到我们最初说的，由于j从1到i-1，当j小的时候其实就相当于两个都拆，所以这种一边拆一边不拆的情况其实是覆盖两边都拆的情况的，这也就解释了我们做任何整数拆分题目时（无论是加拆分还是乘拆分，这里是加拆分，之后的乘是加拆分不同情况之下对应的结果）都总是一边从1到i-1，另外一边拆了</p>
+
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/1/1</div>
-            <a href="/2023/01/01/%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E7%B1%BB%E6%95%B0%E7%BB%84/">
-                <h3>动态创建类数组</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/c/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        c++
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/c-new%E5%BA%93/" style="color: #00a596">
-                            c++ new库
-                        </a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/c-%E7%B1%BB/" style="color: #00a596">
-                            c++ 类
-                        </a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
+    
+    
+    
     
 </div>
 
@@ -332,6 +217,11 @@
         </div>
         <script src="/js/functions.js"></script>
 <script src="/js/particlex.js"></script>
+
+    
+    
+    
+    
 
 
     </body>
