@@ -1,0 +1,797 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Tobey的小木屋</title>
+        <meta name="author" content="Tobey Guo">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://imgshack.netlify.app/img/QQ%E5%9B%BE%E7%89%8720230101095724.jpg">
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css">
+        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features="></script>
+        
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+    <meta name="generator" content="Hexo 6.2.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:2147483647;justify-content:space-between;background:#fff;transition:all 0.3s ease-out;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none">
+    <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+        <div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+            <div>
+                <h2>LOADING...</h2>
+                <p style="word-break:keep-all">加载过慢请开启缓存（浏览器默认开启）</p>
+                <div>
+                    <img alt="loading" src="/loading.gif">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div id="layout">
+            <transition name="into">
+                <div v-show="showpage" style="display: -not-none">
+                    <div id="menushow">
+                        <nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tobey的小木屋</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menushow" id="phone-menu">
+        <div class="curtain" @click="menushow = !menushow" v-show="menushow"></div>
+        <div class="title" @click="menushow = !menushow">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tobey的小木屋</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menushow">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                    </div>
+                    <div id="main">
+                        <div id="home-background" style="background-image: url(https://imgshack.netlify.app/img/wallhaven.png)"></div>
+<div id="home-head">
+    
+    <div id="home-info" class="home-info" @click="homeclick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Tobey的小木屋</h1>
+                <h3>记录Tobey Guo的学习、生活感悟的小木屋</h3>
+                <h5></h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+<div id="home-posts-wrap" class="">
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2023/10/22/GIT%E7%BC%96%E7%A0%81bug%E8%A7%A3%E5%86%B3/">
+        <h2 class="post-title">Git编码GBK与UTF-8的bug解决</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                配置问题
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/22
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>好久没有写blog了，最经遇到了一个绷不住了的bug，写一下解决过程</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Git/" style="color: #ffa2c4">
+                Git
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/10/22/GIT%E7%BC%96%E7%A0%81bug%E8%A7%A3%E5%86%B3/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/06/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86%E9%A2%98%E7%9B%AE%E6%84%9F%E6%82%9F/">
+        <h2 class="post-title">动态规划整数拆分题目感悟</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/algorithm/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                algorithm
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/11
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>题目如下：<br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-equal-subset-sum/">https://leetcode.cn/problems/partition-equal-subset-sum/</a></p>
+<blockquote>
+<p>给你一个 只包含正整数 的 非空 数组 nums 。请你判断是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [1,5,11,5]<br>输出：true<br>解释：数组可以分割成 [1, 5, 5] 和 [11] 。<br>示例 2：</p>
+<p>输入：nums &#x3D; [1,2,3,5]<br>输出：false<br>解释：数组不能分割成两个元素和相等的子集。</p>
+</blockquote>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="color: #ff7d73">
+                动态规划
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/06/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86%E9%A2%98%E7%9B%AE%E6%84%9F%E6%82%9F/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/06/11/%E5%9B%9E%E6%BA%AF%E6%B3%95%E5%AD%90%E9%9B%86%E6%A0%91%E7%9A%84%E6%84%9F%E6%82%9F/">
+        <h2 class="post-title">回溯法子集树的感悟</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/algorithm/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                algorithm
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/11
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="回溯法子集树代码的感悟"><a href="#回溯法子集树代码的感悟" class="headerlink" title="回溯法子集树代码的感悟"></a>回溯法子集树代码的感悟</h1><p>不同于01背包类型的子集树，那个是只有一个背包，所以只会产生一个子集树，有用的终点为每一个物品都进行过是否放置的选择</p>
+<p>这是一个一维选择问题，所以只会产生一个子集树</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="color: #ffa2c4">
+                回溯法
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/06/11/%E5%9B%9E%E6%BA%AF%E6%B3%95%E5%AD%90%E9%9B%86%E6%A0%91%E7%9A%84%E6%84%9F%E6%82%9F/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/09/%E9%80%9A%E8%BF%87%E6%95%B0%E7%BB%84%E5%85%A8%E6%8E%92%E5%88%97%E6%80%9D%E8%80%83%E9%80%92%E5%BD%92/">
+        <h2 class="post-title">通过数组全排列思考递归</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/c/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                c++
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/9
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E9%80%92%E5%BD%92/" style="color: #00bcd4">
+                递归
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/09/%E9%80%9A%E8%BF%87%E6%95%B0%E7%BB%84%E5%85%A8%E6%8E%92%E5%88%97%E6%80%9D%E8%80%83%E9%80%92%E5%BD%92/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/01/17/vector-%E7%94%A8%E6%B3%95%E5%A4%A7%E5%85%A8/">
+        <h2 class="post-title">Vector 用法大全</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/c/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                c++
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/17
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p><strong>转自</strong><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/cpp/cpp-i6da2pq0.html">C++ vector使用方法_w3cschool</a></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" style="color: #ff7d73">
+                命令大全
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/vector/" style="color: #03a9f4">
+                vector
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/01/17/vector-%E7%94%A8%E6%B3%95%E5%A4%A7%E5%85%A8/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/01/07/conda-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">
+        <h2 class="post-title">Conda 命令大全</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/ai/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                ai
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/7
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>下面展示了一些常用conda命令</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/conda/" style="color: #ff7d73">
+                conda
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" style="color: #00a596">
+                命令大全
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/01/07/conda-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/01/05/race-debug/">
+        <h2 class="post-title">Race Debug</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/c/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                c++
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/5
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>佬的笔记😍😍😍</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/c-debug/" style="color: #00bcd4">
+                c++ debug
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%AB%9E%E8%B5%9B/" style="color: #ffa2c4">
+                竞赛
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/01/05/race-debug/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/01/05/blog%E7%9A%84%E6%95%B4%E4%BD%93%E7%90%86%E8%A7%A3/">
+        <h2 class="post-title">Blog的整体理解</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/site/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                site
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/5
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="blog的整体理念"><a href="#blog的整体理念" class="headerlink" title="blog的整体理念"></a>blog的整体理念</h1><p>涉及</p>
+<ul>
+<li><code>github page</code>的使用</li>
+<li><code>Hexo</code> 的原理</li>
+<li><code>netlify</code> 的两种使用方法</li>
+</ul>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/GitHub-page/" style="color: #ff7d73">
+                GitHub page
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/netfily-%E4%B8%A4%E7%A7%8D%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" style="color: #00bcd4">
+                netfily 两种功能实现
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/hexo-%E5%8E%9F%E7%90%86/" style="color: #00a596">
+                hexo 原理
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/01/05/blog%E7%9A%84%E6%95%B4%E4%BD%93%E7%90%86%E8%A7%A3/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/01/01/%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E7%B1%BB%E6%95%B0%E7%BB%84/">
+        <h2 class="post-title">动态创建类数组</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/c/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                c++
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/1
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="动态创建类数组，同时调用类的构造函数"><a href="#动态创建类数组，同时调用类的构造函数" class="headerlink" title="动态创建类数组，同时调用类的构造函数"></a>动态创建类数组，同时调用类的构造函数</h1><p>这是我铁哥们gwx的blog，挂在我这里让我瞻仰瞻仰 😍</p>
+<p>这可比我的哪些垃圾blog有价值多了 😭😭</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/c-new%E5%BA%93/" style="color: #03a9f4">
+                c++ new库
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/c-%E7%B1%BB/" style="color: #00a596">
+                c++ 类
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/01/01/%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E7%B1%BB%E6%95%B0%E7%BB%84/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/01/01/token%E5%92%8C%E5%9B%BE%E5%BA%8A%E9%97%AE%E9%A2%98/">
+        <h2 class="post-title">Token和图床问题</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/site/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                site
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/1/1
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>好久没动这个博客了，开了学就放了，最近朋友想用blog传传笔记才又开始动了它</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="color: #00bcd4">
+                图床
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/jsDelivr-%E5%8A%A0%E9%80%9F/" style="color: #ffa2c4">
+                jsDelivr 加速
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/github-token/" style="color: #ff7d73">
+                github token
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%AB%AF%E5%8F%A3%E6%9F%A5%E7%9C%8B/" style="color: #ff7d73">
+                端口查看
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/01/01/token%E5%92%8C%E5%9B%BE%E5%BA%8A%E9%97%AE%E9%A2%98/" class="go-post">阅读全文</a>
+</div>
+
+
+            <div class="page-current">
+    <div class="prev">
+        
+    </div>
+    <div class="page-index">
+        
+        <span class="current">
+            1
+        </span>
+        
+        <span>
+            <a href="/page/2/">
+                <span class="page-num">
+                    2
+                </span>
+            </a>
+            
+            
+        </span>
+        
+    </div>
+    <div class="next">
+        
+        <a href="/page/2/ ">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-right fa-fw"></i>
+            </span>
+        </a>
+        
+    </div>
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="https://imgshack.netlify.app/img/QQ%E5%9B%BE%E7%89%8720230101095724.jpg" alt="avatar">
+        </div>
+        <div class="name">
+            Tobey Guo
+        </div>
+        <div class="descriptions">
+            
+            <div class="description">
+                <p>这是一个供tobey写学习，生活方面感想的blog树洞，主要是为了偶尔记录一下学习过程中的感悟<br>❗❗AI向的内容就不写了，计划就写一些不怎么重要的小东西（这个是toy性质的个人主页，不适合专业的内容）❗❗</p>
+
+            </div>
+            
+        </div>
+        <div class="icon-links">
+            
+        </div>
+        <div class="friend-links">
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+                        <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022-8-27 - 2024 Tobey的小木屋
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Tobey Guo
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> & <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+
+                    </div>
+                </div>
+            </transition>
+            <div id="showimg">
+                <img id="showimg-content" alt="showimg">
+            </div>
+        </div>
+        <script src="/js/functions.js"></script>
+<script src="/js/particlex.js"></script>
+
+
+    </body>
+</html>
